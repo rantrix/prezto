@@ -49,7 +49,8 @@ function prompt_sorin_git_info {
     if [[ -s "$_prompt_sorin_precmd_async_data" ]]; then
       alias typeset='typeset -g'
       source "$_prompt_sorin_precmd_async_data"
-      RPROMPT+='${git_info:+${(e)git_info[status]}}'
+      # RPROMPT+='${git_info:+${(e)git_info[status]}}'
+      PROMPT='${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f         "}%F{4}${_prompt_sorin_pwd}(${git_info:+${(e)git_info[status]}} )%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
       unalias typeset
     fi
 
